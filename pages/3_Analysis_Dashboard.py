@@ -36,9 +36,13 @@ if "resume_text" in st.session_state and "job_text" in st.session_state:
     labels = ['Matched', 'Missing']
     sizes = [len(matched), len(missing)]
 
+if sum(sizes) > 0:
     fig, ax = plt.subplots()
     ax.pie(sizes, labels=labels, autopct='%1.1f%%')
     st.pyplot(fig)
+else:
+    st.warning("Not enough skill data to generate chart.")
+
 
 else:
     st.warning("Please upload resume and job description first.")
