@@ -4,6 +4,10 @@ from utils import clean_text, extract_skills
 st.title("📝 Job Description")
 
 job_text = st.text_area("Paste Job Description")
+if not job_description.strip():
+    st.warning("Please enter a job description.")
+    st.stop()
+
 
 if job_text:
     cleaned_job = clean_text(job_text)
