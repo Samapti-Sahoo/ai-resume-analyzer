@@ -49,5 +49,4 @@ else:
     st.warning("Not enough skill data to generate chart.")
 
 
-else:
-    st.warning("Please upload resume and job description first.")
+
