@@ -1,9 +1,14 @@
 import streamlit as st
+
 import matplotlib.pyplot as plt
 from scoring import calculate_similarity, calculate_final_score
 from utils import extract_skills
 
 st.title("📊 Analysis Dashboard")
+if "resume_text" not in st.session_state or "job_text" not in st.session_state:
+    st.warning("Please upload resume and job description first.")
+    st.stop()
+
 
 if "resume_text" in st.session_state and "job_text" in st.session_state:
 
