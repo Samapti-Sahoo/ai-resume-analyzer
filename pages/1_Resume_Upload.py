@@ -4,6 +4,10 @@ from utils import extract_text_from_pdf, clean_text, extract_skills
 st.title("📄 Resume Upload")
 
 uploaded_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
+if uploaded_file is None:
+    st.warning("Please upload a resume to proceed.")
+    st.stop()
+
 
 if uploaded_file:
     text = extract_text_from_pdf(uploaded_file)
