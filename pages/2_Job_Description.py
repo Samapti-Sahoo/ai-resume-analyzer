@@ -1,64 +1,122 @@
 import streamlit as st
 from utils import clean_text, extract_skills
 
-st.markdown('<div class="main-title">Job Description</div>',unsafe_allow_html=True)
 
-st.markdown("<br>",unsafe_allow_html=True)
+# ---------- DESIGN ----------
+
+st.markdown("""
+
+<style>
+
+/* Text Box */
+
+textarea {
+
+background:rgba(255,255,255,0.05) !important;
+
+border-radius:15px !important;
+
+border:1px solid rgba(255,255,255,0.1) !important;
+
+color:white !important;
+
+font-size:16px !important;
+
+}
 
 
-# Glass Card
+/* Skill Tag */
 
-st.markdown('<div class="glass">',unsafe_allow_html=True)
+.skill-tag{
 
-st.subheader("📄 Paste Job Description")
+background:rgba(59,130,246,0.3);
 
-job_text=st.text_area(
+padding:10px 18px;
 
-"",
-height=250,
+border-radius:20px;
 
-placeholder="Paste job description here..."
+margin:5px;
+
+display:inline-block;
+
+font-weight:bold;
+
+}
+
+
+/* Box */
+
+.big-box{
+
+background:rgba(255,255,255,0.05);
+
+padding:30px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,0.1);
+
+}
+
+</style>
+
+""",unsafe_allow_html=True)
+
+
+
+# ---------- TITLE ----------
+
+st.markdown("# 🧾 Job Description")
+
+st.write("Paste Job Description for AI Analysis")
+
+st.write("")
+
+
+
+# ---------- INPUT BOX ----------
+
+st.markdown('<div class="big-box">',unsafe_allow_html=True)
+
+job_text = st.text_area(
+
+"Paste Job Description",
+
+height=250
 
 )
 
 st.markdown('</div>',unsafe_allow_html=True)
 
 
-<<<<<<< HEAD
+
+# ---------- PROCESS ----------
+
 if job_text:
 
- cleaned=clean_text(job_text)
+    cleaned = clean_text(job_text)
 
- st.session_state.job_text=cleaned
+    st.session_state.job_text = cleaned
 
-
- skills=extract_skills(cleaned)
-
-
- st.markdown("<br>",unsafe_allow_html=True)
+    skills = extract_skills(cleaned)
 
 
- st.markdown('<div class="glass">',unsafe_allow_html=True)
+    st.success("Job Description Added")
 
- st.subheader("🎯 Required Skills Detected")
 
- st.success(skills)
+    st.write("")
 
- st.markdown('</div>',unsafe_allow_html=True)
-=======
-if not job_text.strip():
-    st.warning("Please enter a job description.")
-    st.stop()
 
-# Clean job description
-cleaned_job = clean_text(job_text)
+    st.subheader("Required Skills Detected")
 
-# Save cleaned job text to session state
-st.session_state.job_text = cleaned_job
 
-# Extract required skills
-job_skills = extract_skills(cleaned_job)
+    for skill in skills:
 
-st.subheader("Required Skills Detected")
-st.write(job_skills)
->>>>>>> 4d8c990fd13454e69eb315505811905e6e37dccd
+        st.markdown(
+        f'<span class="skill-tag">{skill}</span>',
+        unsafe_allow_html=True
+        )
+
+else:
+
+    st.info("Paste Job Description to continue")
