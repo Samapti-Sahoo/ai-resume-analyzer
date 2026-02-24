@@ -1,38 +1,13 @@
 import streamlit as st
 from animations import load_animations
 
-st.set_page_config(
-page_title="AI Resume Analyzer",
-layout="wide"
-)
+st.set_page_config(layout="wide")
 
 load_animations()
 
+st.markdown('<div class="title">🚀 AI Resume Analyzer</div>',unsafe_allow_html=True)
 
-
-st.markdown("""
-
-<div class="title">
-
-🚀 AI Resume Analyzer
-
-</div>
-
-""",unsafe_allow_html=True)
-
-
-
-st.markdown("""
-
-<div class="subtitle">
-
-Smart Resume Intelligence System
-
-</div>
-
-""",unsafe_allow_html=True)
-
-
+st.markdown('<div class="subtitle">Smart Resume Intelligence System</div>',unsafe_allow_html=True)
 
 st.write("")
 st.write("")
@@ -42,7 +17,13 @@ col1,col2,col3=st.columns(3)
 
 
 
+# ---------- CARD 1 ----------
+
 with col1:
+
+    if st.button("📄 Upload Resume",use_container_width=True):
+
+        st.switch_page("pages/1_Resume_Upload.py")
 
     st.markdown("""
 
@@ -56,13 +37,15 @@ with col1:
 
 """,unsafe_allow_html=True)
 
-    if st.button("Open Upload"):
-
-        st.switch_page("pages/1_Resume_Upload.py")
 
 
+# ---------- CARD 2 ----------
 
 with col2:
+
+    if st.button("🧠 AI Matching",use_container_width=True):
+
+        st.switch_page("pages/3_Analysis_Dashboard.py")
 
     st.markdown("""
 
@@ -70,20 +53,21 @@ with col2:
 
 <h2>🧠 AI Matching</h2>
 
-<p>Compare Resume and Job</p>
+<p>Analyze Resume Skills</p>
 
 </div>
 
 """,unsafe_allow_html=True)
 
 
-    if st.button("Open Matching"):
 
-        st.switch_page("pages/3_Analysis_Dashboard.py")
-
-
+# ---------- CARD 3 ----------
 
 with col3:
+
+    if st.button("📊 ATS Score",use_container_width=True):
+
+        st.switch_page("pages/4_ATS_Checker.py")
 
     st.markdown("""
 
@@ -96,17 +80,3 @@ with col3:
 </div>
 
 """,unsafe_allow_html=True)
-
-
-    if st.button("Open ATS"):
-
-        st.switch_page("pages/4_ATS_Checker.py")
-
-
-
-st.sidebar.title("Navigation")
-
-st.sidebar.write("📄 Resume Upload")
-st.sidebar.write("🧠 Job Description")
-st.sidebar.write("📊 Dashboard")
-st.sidebar.write("⭐ ATS Checker")

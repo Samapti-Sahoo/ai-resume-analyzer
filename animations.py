@@ -6,7 +6,7 @@ def load_animations():
 
 <style>
 
-/* ===== MEDIUM DARK BACKGROUND ===== */
+/* ===== BACKGROUND ===== */
 
 .stApp{
 
@@ -14,18 +14,16 @@ background:
 
 linear-gradient(
 135deg,
-#eaf2ff,
-#dfe9ff,
+#edf3ff,
+#dbe6ff,
 #edf3ff
 );
-
-color:#111;
 
 }
 
 
 
-/* ===== SOFT DARK CONTAINER ===== */
+/* ===== MAIN CONTAINER ===== */
 
 .block-container{
 
@@ -33,8 +31,8 @@ background:
 
 linear-gradient(
 135deg,
-rgba(40,60,100,0.85),
-rgba(30,40,80,0.85)
+rgba(30,40,80,0.9),
+rgba(40,60,110,0.9)
 );
 
 padding:40px;
@@ -42,7 +40,6 @@ padding:40px;
 border-radius:20px;
 
 box-shadow:
-
 0px 20px 60px rgba(0,0,0,0.2);
 
 color:white;
@@ -55,12 +52,9 @@ color:white;
 
 .title{
 
-font-size:60px;
-
-font-weight:800;
-
+font-size:55px;
+font-weight:bold;
 text-align:center;
-
 color:white;
 
 }
@@ -72,21 +66,18 @@ color:white;
 .subtitle{
 
 text-align:center;
-
 font-size:22px;
-
-color:#dfe8ff;
+color:#e3ecff;
 
 }
 
 
 
-/* ===== GLASS CARDS ===== */
+/* ===== CARDS ===== */
 
 .card{
 
 background:
-
 rgba(255,255,255,0.12);
 
 padding:40px;
@@ -96,10 +87,9 @@ border-radius:20px;
 border:1px solid rgba(255,255,255,0.2);
 
 box-shadow:
-
 0px 15px 40px rgba(0,0,0,0.3);
 
-transition:0.4s;
+transition:0.3s;
 
 text-align:center;
 
@@ -108,47 +98,24 @@ color:white;
 }
 
 
-
-/* ===== 3D HOVER ===== */
-
 .card:hover{
 
-transform:
-
-translateY(-10px)
-
-scale(1.04);
+transform:translateY(-10px);
 
 box-shadow:
-
 0px 40px 70px rgba(0,0,0,0.5);
 
 }
 
 
 
-/* ===== ROCKET ===== */
+/* ===== BUTTONS ===== */
 
-.rocket{
+.stButton>button{
 
-position:absolute;
-
-top:20px;
-
-left:-100px;
-
-font-size:50px;
-
-animation:rocketfly 15s infinite linear;
-
-}
-
-
-@keyframes rocketfly{
-
-0%{left:-100px;}
-
-100%{left:110%;}
+background:#3b6cff;
+color:white;
+border-radius:10px;
 
 }
 
@@ -173,17 +140,5 @@ color:white;
 
 
 </style>
-
-""",unsafe_allow_html=True)
-
-
-
-    st.markdown("""
-
-<div class="rocket">
-
-🚀
-
-</div>
 
 """,unsafe_allow_html=True)

@@ -1,19 +1,14 @@
 import streamlit as st
+from animations import load_animations
 from utils import extract_text_from_pdf
-from style import load_css
 
+load_animations()
 
-st.markdown(load_css(),unsafe_allow_html=True)
+st.markdown('<div class="title">📄 Upload Resume</div>',unsafe_allow_html=True)
 
-st.title("📄 Upload Resume")
+st.markdown('<div class="card">',unsafe_allow_html=True)
 
-
-st.markdown('<div class="upload-box">',unsafe_allow_html=True)
-
-file=st.file_uploader(
-"Upload Resume PDF",
-type=["pdf"]
-)
+file=st.file_uploader("Upload Resume PDF")
 
 st.markdown('</div>',unsafe_allow_html=True)
 
@@ -25,4 +20,4 @@ if file:
 
     st.session_state.resume_text=text
 
-    st.success("Resume Uploaded Successfully")
+    st.success("Resume Uploaded")

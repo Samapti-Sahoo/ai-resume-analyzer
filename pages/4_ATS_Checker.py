@@ -1,28 +1,13 @@
 import streamlit as st
-from scoring import calculate_similarity,calculate_final_score
-from utils import extract_skills
-from style import load_css
+from animations import load_animations
 
-st.markdown(load_css(),unsafe_allow_html=True)
+load_animations()
 
-st.title("📊 ATS Score")
+st.markdown('<div class="title">⭐ ATS Score</div>',unsafe_allow_html=True)
 
 
-if "resume_text" not in st.session_state:
+score=75
 
-    st.warning("Upload Resume First")
-
-    st.stop()
-
-
-resume=st.session_state.resume_text
-
-
-skills=extract_skills(resume)
-
-score=70+len(skills)
-
-
-st.metric("ATS Score",str(score)+"%")
+st.metric("ATS Score",score)
 
 st.progress(score)

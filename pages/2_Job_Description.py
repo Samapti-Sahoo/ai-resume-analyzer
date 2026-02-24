@@ -1,22 +1,16 @@
 import streamlit as st
-from utils import clean_text,extract_skills
-from style import load_css
+from animations import load_animations
 
-st.markdown(load_css(),unsafe_allow_html=True)
+load_animations()
 
-st.title("📝 Job Description")
+st.markdown('<div class="title">🧠 Job Description</div>',unsafe_allow_html=True)
+
 
 job=st.text_area("Paste Job Description")
 
 
 if job:
 
-    cleaned=clean_text(job)
+    st.session_state.job_text=job
 
-    st.session_state.job_text=cleaned
-
-    skills=extract_skills(cleaned)
-
-    st.subheader("Detected Skills")
-
-    st.write(skills)
+    st.success("Job Description Saved")
