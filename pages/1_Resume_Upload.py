@@ -1,19 +1,51 @@
 import streamlit as st
 from utils import extract_text_from_pdf, clean_text, extract_skills
 
-st.title("📄 Resume Upload")
+st.markdown("""
+<div class="main-title">
+Resume Analyzer
+</div>
+""",unsafe_allow_html=True)
 
-uploaded_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
+st.markdown("<br>",unsafe_allow_html=True)
+
+
+# Upload Card
+
+st.markdown('<div class="glass">',unsafe_allow_html=True)
+
+st.subheader("📁 Upload Resume")
+
+uploaded_file = st.file_uploader(
+    "Upload PDF Resume",
+    type=["pdf"]
+)
+
+st.markdown('</div>',unsafe_allow_html=True)
+
 
 if uploaded_file:
+
     text = extract_text_from_pdf(uploaded_file)
-    cleaned_text = clean_text(text)
 
-    st.session_state.resume_text = cleaned_text
-    skills_found = extract_skills(cleaned_text)
+    cleaned = clean_text(text)
 
-    st.subheader("Detected Skills")
-    st.write(skills_found)
+    st.session_state.resume_text = cleaned
 
-    st.subheader("Word Count")
-    st.write(len(cleaned_text.split()))
+    skills = extract_skills(cleaned)
+
+    st.session_state.resume_skills = skills
+
+
+    st.markdown("<br>",unsafe_allow_html=True)
+
+
+    # Skills Card
+
+    st.markdown('<div class="glass">',unsafe_allow_html=True)
+
+    st.subheader("🎯 Skills Detected")
+
+    st.success(skills)
+
+    st.markdown('</div>',unsafe_allow_html=True)
