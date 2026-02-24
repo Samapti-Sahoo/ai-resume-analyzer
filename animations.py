@@ -6,198 +6,173 @@ def load_animations():
 
 <style>
 
-/* ===== CINEMATIC BACKGROUND ===== */
-
-.stApp{
-
-background:
-
-linear-gradient(
-135deg,
-#e6eeff,
-#cfdcff,
-#e8f0ff
-);
-
+body{
+background:linear-gradient(135deg,#dfe9f3,#f5f7fa);
 }
 
 
+/* Title */
 
-/* ===== MAIN CONTAINER ===== */
+.title{
+text-align:center;
+font-size:60px;
+font-weight:800;
+color:#243b55;
+animation:fade 2s;
+}
 
-.block-container{
+.subtitle{
+text-align:center;
+font-size:22px;
+color:#4a5a70;
+margin-bottom:40px;
+animation:fade 3s;
+}
 
-background:
 
-linear-gradient(
-135deg,
-rgba(30,40,80,0.95),
-rgba(40,50,90,0.95)
-);
+/* Cards */
+
+.card{
+
+background:linear-gradient(145deg,#ffffff,#e6ecf5);
 
 padding:40px;
 
 border-radius:25px;
 
-box-shadow:
-0px 20px 70px rgba(0,0,0,0.25);
-
-color:white;
-
-}
-
-
-
-/* ===== TITLES ===== */
-
-.title{
-
-font-size:60px;
-
-font-weight:bold;
-
-text-align:center;
-
-color:white;
-
-letter-spacing:2px;
-
-}
-
-
-.subtitle{
-
-text-align:center;
-
-font-size:22px;
-
-color:#dce6ff;
-
-margin-bottom:30px;
-
-}
-
-
-
-/* ===== CINEMATIC CARDS ===== */
-
-.card{
-
-background:
-
-rgba(255,255,255,0.1);
-
-padding:50px;
-
-border-radius:25px;
-
-border:1px solid rgba(255,255,255,0.2);
-
 text-align:center;
 
 box-shadow:
-0px 20px 40px rgba(0,0,0,0.3);
+
+10px 10px 20px rgba(0,0,0,0.15),
+
+-10px -10px 20px white;
 
 transition:0.4s;
 
 cursor:pointer;
 
+height:250px;
+
 }
 
-
-
-/* Hover */
 
 .card:hover{
 
 transform:
 
-translateY(-15px)
+translateY(-10px)
 
 scale(1.05);
 
 box-shadow:
-0px 40px 80px rgba(0,0,0,0.5);
+
+0px 20px 40px rgba(0,0,0,0.3);
 
 }
 
 
 
-/* Click Animation */
-
-.card:active{
-
-transform:scale(0.95);
-
-}
-
-
-
-/* ===== SIDEBAR ===== */
+/* Sidebar */
 
 section[data-testid="stSidebar"]{
 
 background:
 
 linear-gradient(
+
 180deg,
-#1b2a52,
-#243870
+
+#2c3e50,
+
+#4ca1af
+
 );
 
 color:white;
 
-box-shadow:
-5px 0px 30px rgba(0,0,0,0.3);
+}
+
+
+
+section[data-testid="stSidebar"] *{
+
+color:white !important;
 
 }
 
 
 
-/* Sidebar Hover */
-
-section[data-testid="stSidebar"]:hover{
-
-box-shadow:
-10px 0px 50px rgba(0,0,0,0.4);
-
-}
-
-
-
-/* Buttons Hidden Feel */
+/* Cinematic Button */
 
 .stButton>button{
 
-background:transparent;
+background:linear-gradient(
+
+90deg,
+
+#36d1dc,
+
+#5b86e5
+
+);
 
 border:none;
 
-color:transparent;
+padding:14px;
 
-height:0px;
+border-radius:20px;
 
-}
+color:white;
 
+font-size:18px;
 
-
-/* METRIC STYLE */
-
-[data-testid="metric-container"]{
-
-background:
-
-rgba(255,255,255,0.1);
-
-padding:20px;
-
-border-radius:15px;
-
-border:1px solid rgba(255,255,255,0.2);
+transition:0.4s;
 
 }
 
 
+
+.stButton>button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+/* Rocket Animation */
+
+.rocket{
+
+font-size:60px;
+
+animation:fly 3s infinite;
+
+text-align:center;
+
+}
+
+
+@keyframes fly{
+
+0%{transform:translateY(0px)}
+
+50%{transform:translateY(-20px)}
+
+100%{transform:translateY(0px)}
+
+}
+
+
+/* Fade */
+
+@keyframes fade{
+
+from{opacity:0}
+
+to{opacity:1}
+
+}
 
 </style>
 
