@@ -2,31 +2,89 @@ import streamlit as st
 from scoring import calculate_similarity
 from utils import extract_skills
 
-st.markdown('<div class="main-title">ATS Checker</div>',unsafe_allow_html=True)
 
-st.markdown("<br>",unsafe_allow_html=True)
+# ---------- DESIGN ----------
+
+st.markdown("""
+
+<style>
+
+.box{
+
+background:rgba(255,255,255,0.05);
+
+padding:25px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,0.1);
+
+margin-bottom:20px;
+
+}
+
+.good{
+
+color:#22c55e;
+font-weight:bold;
+
+}
+
+.bad{
+
+color:#ef4444;
+font-weight:bold;
+
+}
+
+</style>
+
+""",unsafe_allow_html=True)
+
+
+
+# ---------- TITLE ----------
+
+st.markdown("# 🎯 ATS Compatibility Checker")
+
+st.write("Check Resume ATS Compatibility")
+
+st.write("")
+
+
+# ---------- CHECK ----------
 
 if "resume_text" not in st.session_state or "job_text" not in st.session_state:
 
-    st.markdown('<div class="glass">',unsafe_allow_html=True)
-
     st.warning("Upload Resume and Job Description First")
-
-    st.markdown('</div>',unsafe_allow_html=True)
 
     st.stop()
 
 
-
-resume=st.session_state.resume_text
-job=st.session_state.job_text
-
-
-similarity=calculate_similarity(resume,job)
+resume = st.session_state.resume_text
+job = st.session_state.job_text
 
 
-resume_skills=extract_skills(resume)
-job_skills=extract_skills(job)
+# ---------- SCORE ----------
+
+similarity = calculate_similarity(resume,job)
+
+ats_score=int(similarity*100)
+
+
+st.subheader("ATS Score")
+
+st.progress(ats_score)
+
+st.metric("Compatibility",f"{ats_score}%")
+
+st.write("")
+
+
+# ---------- ANALYSIS ----------
+
+resume_skills = extract_skills(resume)
+job_skills = extract_skills(job)
 
 
 matched=list(set(resume_skills)&set(job_skills))
@@ -34,42 +92,42 @@ matched=list(set(resume_skills)&set(job_skills))
 missing=list(set(job_skills)-set(resume_skills))
 
 
-ats_score=int(similarity*100)
+# ---------- GOOD POINTS ----------
 
+st.markdown('<div class="box">',unsafe_allow_html=True)
 
-st.markdown('<div class="glass">',unsafe_allow_html=True)
+st.subheader("Good Points")
 
-st.subheader("ATS Score")
+if len(matched)>0:
 
-st.metric("Match Percentage",f"{ats_score}%")
+    for s in matched:
 
-st.progress(ats_score)
+        st.markdown(f"<span class='good'>✔ {s}</span>",unsafe_allow_html=True)
+
+else:
+
+    st.write("No matched skills found")
+
 
 st.markdown('</div>',unsafe_allow_html=True)
 
 
-st.markdown("<br>",unsafe_allow_html=True)
+
+# ---------- IMPROVEMENTS ----------
+
+st.markdown('<div class="box">',unsafe_allow_html=True)
+
+st.subheader("Improve Your Resume")
+
+if len(missing)>0:
+
+    for s in missing:
+
+        st.markdown(f"<span class='bad'>✘ Add skill: {s}</span>",unsafe_allow_html=True)
+
+else:
+
+    st.write("Resume looks good")
 
 
-col1,col2=st.columns(2)
-
-with col1:
-
- st.markdown('<div class="glass">',unsafe_allow_html=True)
-
- st.subheader("Matched Skills")
-
- st.success(matched)
-
- st.markdown('</div>',unsafe_allow_html=True)
-
-
-with col2:
-
- st.markdown('<div class="glass">',unsafe_allow_html=True)
-
- st.subheader("Missing Skills")
-
- st.error(missing)
-
- st.markdown('</div>',unsafe_allow_html=True)
+st.markdown('</div>',unsafe_allow_html=True)
