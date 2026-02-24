@@ -6,35 +6,81 @@ def load_animations():
 
 <style>
 
-body{
-background:linear-gradient(135deg,#dfe9f3,#f5f7fa);
+/* Background */
+
+.stApp{
+
+background:linear-gradient(
+135deg,
+#3a3f6b,
+#2c2f55,
+#1f2240
+);
+
+color:#ffffff;
+
 }
 
 
 /* Title */
 
 .title{
+
 text-align:center;
-font-size:60px;
+
+font-size:70px;
+
 font-weight:800;
-color:#243b55;
-animation:fade 2s;
+
+color:#ffffff;
+
+text-shadow:0px 0px 30px cyan;
+
 }
 
+
 .subtitle{
+
 text-align:center;
-font-size:22px;
-color:#4a5a70;
+
+font-size:24px;
+
+color:#d7e0ff;
+
 margin-bottom:40px;
-animation:fade 3s;
+
 }
+
+
+
+/* Rocket */
+
+.rocket{
+
+font-size:70px;
+
+text-align:center;
+
+animation:fly 3s infinite;
+
+}
+
+
+@keyframes fly{
+
+0%{transform:translateY(0px)}
+50%{transform:translateY(-15px)}
+100%{transform:translateY(0px)}
+
+}
+
 
 
 /* Cards */
 
 .card{
 
-background:linear-gradient(145deg,#ffffff,#e6ecf5);
+background:rgba(255,255,255,0.08);
 
 padding:40px;
 
@@ -42,32 +88,56 @@ border-radius:25px;
 
 text-align:center;
 
+backdrop-filter:blur(10px);
+
 box-shadow:
-
-10px 10px 20px rgba(0,0,0,0.15),
-
--10px -10px 20px white;
+0px 10px 30px rgba(0,0,0,0.5);
 
 transition:0.4s;
 
 cursor:pointer;
 
-height:250px;
+height:260px;
 
 }
+
+
+/* Card Text */
+
+.card h1{
+
+font-size:50px;
+
+}
+
+
+.card h2{
+
+color:#ffffff;
+
+font-size:28px;
+
+}
+
+
+.card p{
+
+color:#cfd8ff;
+
+font-size:18px;
+
+}
+
 
 
 .card:hover{
 
 transform:
-
-translateY(-10px)
-
-scale(1.05);
+scale(1.07)
+translateY(-10px);
 
 box-shadow:
-
-0px 20px 40px rgba(0,0,0,0.3);
+0px 20px 50px rgba(0,0,0,0.8);
 
 }
 
@@ -77,60 +147,50 @@ box-shadow:
 
 section[data-testid="stSidebar"]{
 
-background:
-
-linear-gradient(
+background:linear-gradient(
 
 180deg,
-
-#2c3e50,
-
-#4ca1af
+#23264a,
+#3a3f6b
 
 );
 
-color:white;
-
 }
-
 
 
 section[data-testid="stSidebar"] *{
 
-color:white !important;
+color:#ffffff !important;
 
 }
 
 
 
-/* Cinematic Button */
+/* Buttons */
 
 .stButton>button{
 
 background:linear-gradient(
 
 90deg,
-
-#36d1dc,
-
-#5b86e5
+#00c6ff,
+#0072ff
 
 );
 
 border:none;
 
-padding:14px;
-
 border-radius:20px;
+
+padding:15px;
 
 color:white;
 
 font-size:18px;
 
-transition:0.4s;
+transition:0.3s;
 
 }
-
 
 
 .stButton>button:hover{
@@ -139,40 +199,6 @@ transform:scale(1.1);
 
 }
 
-
-/* Rocket Animation */
-
-.rocket{
-
-font-size:60px;
-
-animation:fly 3s infinite;
-
-text-align:center;
-
-}
-
-
-@keyframes fly{
-
-0%{transform:translateY(0px)}
-
-50%{transform:translateY(-20px)}
-
-100%{transform:translateY(0px)}
-
-}
-
-
-/* Fade */
-
-@keyframes fade{
-
-from{opacity:0}
-
-to{opacity:1}
-
-}
 
 </style>
 

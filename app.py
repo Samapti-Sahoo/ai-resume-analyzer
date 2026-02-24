@@ -1,22 +1,16 @@
 import streamlit as st
 from animations import load_animations
 
-load_animations()
-
 st.set_page_config(
 page_title="AI Resume Analyzer",
 layout="wide"
 )
 
+load_animations()
 
-
-# Rocket
 
 st.markdown('<div class="rocket">🚀</div>',unsafe_allow_html=True)
 
-
-
-# Title
 
 st.markdown("""
 
@@ -27,7 +21,6 @@ AI Resume Analyzer
 </div>
 
 """,unsafe_allow_html=True)
-
 
 
 st.markdown("""
@@ -46,15 +39,9 @@ col1,col2,col3=st.columns(3)
 
 
 
-# Upload Card
+# Upload
 
 with col1:
-
-    if st.button("📄 Upload Resume"):
-
-        st.switch_page("pages/1_Resume_Upload.py")
-
-
 
     st.markdown("""
 
@@ -70,17 +57,15 @@ with col1:
 
 """,unsafe_allow_html=True)
 
+    if st.button("Upload Page"):
+
+        st.switch_page("pages/1_Resume_Upload.py")
 
 
-# Matching Card
+
+# Matching
 
 with col2:
-
-    if st.button("🧠 AI Matching"):
-
-        st.switch_page("pages/3_Analysis_Dashboard.py")
-
-
 
     st.markdown("""
 
@@ -96,17 +81,15 @@ with col2:
 
 """,unsafe_allow_html=True)
 
+    if st.button("Matching Page"):
+
+        st.switch_page("pages/3_Analysis_Dashboard.py")
 
 
-# ATS Card
+
+# ATS
 
 with col3:
-
-    if st.button("📊 ATS Score"):
-
-        st.switch_page("pages/4_ATS_Checker.py")
-
-
 
     st.markdown("""
 
@@ -122,8 +105,12 @@ with col3:
 
 """,unsafe_allow_html=True)
 
+    if st.button("ATS Page"):
+
+        st.switch_page("pages/4_ATS_Checker.py")
+
 
 
 st.write("")
 
-st.success("Click Cards Or Use Sidebar")
+st.success("Use Sidebar Or Click Boxes")
