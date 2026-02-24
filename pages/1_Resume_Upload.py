@@ -23,6 +23,14 @@ uploaded_file = st.file_uploader(
 
 st.markdown('</div>',unsafe_allow_html=True)
 
+<<<<<<< HEAD
+=======
+uploaded_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
+if uploaded_file is None:
+    st.warning("Please upload a resume to proceed.")
+    st.stop()
+
+>>>>>>> 4d8c990fd13454e69eb315505811905e6e37dccd
 
 if uploaded_file:
 
