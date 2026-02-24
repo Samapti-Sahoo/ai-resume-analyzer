@@ -1,5 +1,5 @@
 streamlit
 scikit-learn
 spacy
-PyPDF2
+pypdf2
 matplotlib
