@@ -6,36 +6,34 @@ page_icon="🚀",
 layout="wide"
 )
 
-
-# ---------- ANIME 3D BACKGROUND ----------
+# -------- INSANE ANIME BACKGROUND --------
 
 st.markdown("""
 
 <style>
 
-/* Anime Gradient Background */
+/* Animated Anime Sky */
 
-.stApp {
+.stApp{
 
 background:
 
-radial-gradient(circle at 20% 30%, #ff7eb3, transparent 40%),
+radial-gradient(circle at 10% 20%, #ff00cc55, transparent 40%),
 
-radial-gradient(circle at 80% 70%, #65d6ff, transparent 40%),
+radial-gradient(circle at 90% 80%, #00ffee55, transparent 40%),
 
-linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+linear-gradient(140deg,#050a30,#000428,#004e92);
 
-background-attachment:fixed;
+background-size:400% 400%;
+
+animation:bgmove 15s infinite;
 
 color:white;
 
 }
 
 
-
-/* Floating Glow Animation */
-
-@keyframes glowMove{
+@keyframes bgmove{
 
 0%{background-position:0% 50%}
 
@@ -47,17 +45,54 @@ color:white;
 
 
 
-/* Title 3D */
+/* Floating Lights */
+
+.stApp::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background-image:
+
+radial-gradient(white 1px, transparent 1px);
+
+background-size:50px 50px;
+
+opacity:0.15;
+
+animation:stars 60s linear infinite;
+
+z-index:-1;
+
+}
+
+
+@keyframes stars{
+
+0%{transform:translateY(0px)}
+
+100%{transform:translateY(-2000px)}
+
+}
+
+
+
+/* Neon Title */
 
 .title{
 
-font-size:75px;
+font-size:80px;
 
 font-weight:900;
 
 text-align:center;
 
-background:linear-gradient(90deg,#ffffff,#00ffd5,#65d6ff);
+background:linear-gradient(90deg,#00ffd5,#ffffff,#00ffd5);
 
 -webkit-background-clip:text;
 
@@ -65,7 +100,11 @@ background:linear-gradient(90deg,#ffffff,#00ffd5,#65d6ff);
 
 text-shadow:
 
-0px 5px 20px rgba(0,255,255,0.5);
+0px 0px 20px #00ffd5,
+
+0px 0px 40px #00ffd5,
+
+0px 0px 60px #00ffd5;
 
 }
 
@@ -77,61 +116,65 @@ text-shadow:
 
 text-align:center;
 
-font-size:24px;
+font-size:26px;
 
 margin-bottom:60px;
 
-color:#e2e8f0;
+color:#d1d5db;
 
 }
 
 
 
-/* 3D Glass Cards */
+/* INSANE 3D CARDS */
 
 .card{
 
-background:rgba(255,255,255,0.07);
+background:rgba(255,255,255,0.05);
 
-border-radius:30px;
+border-radius:35px;
 
-padding:45px;
+padding:60px;
 
 text-align:center;
 
-backdrop-filter: blur(30px);
+backdrop-filter: blur(40px);
 
 border:1px solid rgba(255,255,255,0.2);
 
 box-shadow:
 
-0px 25px 60px rgba(0,0,0,0.6),
+0px 30px 80px rgba(0,0,0,0.8),
 
-inset 0px 2px 2px rgba(255,255,255,0.3);
+inset 0px 3px 5px rgba(255,255,255,0.3);
 
-transition:0.5s;
+transition:0.6s;
+
+transform-style:preserve-3d;
 
 }
 
 
 
-/* Hover Animation */
+/* Hover 3D */
 
 .card:hover{
 
 transform:
 
-translateY(-20px)
+rotateX(10deg)
 
-rotateX(5deg)
+rotateY(10deg)
 
-scale(1.05);
+scale(1.08)
+
+translateY(-20px);
 
 box-shadow:
 
-0px 50px 100px rgba(0,0,0,0.9),
+0px 80px 150px rgba(0,0,0,1),
 
-0px 0px 50px #00ffd5;
+0px 0px 80px #00ffd5;
 
 }
 
@@ -141,11 +184,11 @@ box-shadow:
 
 .card-title{
 
-font-size:32px;
+font-size:34px;
 
-font-weight:800;
+font-weight:900;
 
-margin-top:10px;
+margin-top:15px;
 
 }
 
@@ -155,11 +198,31 @@ margin-top:10px;
 
 .card-text{
 
-color:#cbd5e1;
+font-size:18px;
 
 margin-top:10px;
 
-font-size:18px;
+color:#cbd5e1;
+
+}
+
+
+
+/* Floating Animation */
+
+.float{
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0px)}
+
+50%{transform:translateY(-15px)}
+
+100%{transform:translateY(0px)}
 
 }
 
@@ -169,27 +232,37 @@ font-size:18px;
 
 .bottom{
 
-margin-top:60px;
+margin-top:70px;
 
-padding:25px;
+padding:30px;
 
 text-align:center;
 
-border-radius:20px;
+border-radius:25px;
 
 background:
 
-linear-gradient(90deg,#ff7eb3,#65d6ff);
+linear-gradient(90deg,#ff00cc,#00ffee);
 
 font-weight:bold;
 
-font-size:20px;
+font-size:22px;
 
 color:black;
 
 box-shadow:
 
-0px 10px 40px rgba(0,0,0,0.6);
+0px 20px 60px rgba(0,0,0,0.8);
+
+animation:glow 3s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{box-shadow:0px 0px 20px #00ffee}
+
+to{box-shadow:0px 0px 60px #ff00cc}
 
 }
 
@@ -199,110 +272,129 @@ box-shadow:
 
 
 
-# ---------- TITLE ----------
+# -------- TITLE --------
 
 st.markdown(
-'<div class="title">🚀 AI Resume Analyzer</div>',
+
+'<div class="title float">🚀 AI Resume Analyzer</div>',
+
 unsafe_allow_html=True
+
 )
 
 st.markdown(
-'<div class="subtitle">Next Generation AI Resume Matching System</div>',
+
+'<div class="subtitle">Futuristic AI Resume Intelligence System</div>',
+
 unsafe_allow_html=True
+
 )
 
 
 
-# ---------- 3D CARDS ----------
+# -------- 3D CARDS --------
 
 col1,col2,col3=st.columns(3)
 
 
+
 with col1:
 
-    st.markdown("""
+ st.markdown("""
 
-    <div class="card">
+ <div class="card float">
 
-    <div style="font-size:60px">📄</div>
+ <div style="font-size:70px">
 
-    <div class="card-title">
+ 📄
 
-    Upload Resume
+ </div>
 
-    </div>
+ <div class="card-title">
 
-    <div class="card-text">
+ Upload Resume
 
-    Analyze PDF Resume
+ </div>
 
-    </div>
+ <div class="card-text">
 
-    </div>
+ Smart Resume Parser
 
-    """,unsafe_allow_html=True)
+ </div>
+
+ </div>
+
+ """,unsafe_allow_html=True)
 
 
 
 with col2:
 
-    st.markdown("""
+ st.markdown("""
 
-    <div class="card">
+ <div class="card float">
 
-    <div style="font-size:60px">🧠</div>
+ <div style="font-size:70px">
 
-    <div class="card-title">
+ 🧠
 
-    AI Matching
+ </div>
 
-    </div>
+ <div class="card-title">
 
-    <div class="card-text">
+ AI Matching
 
-    Smart Skill Detection
+ </div>
 
-    </div>
+ <div class="card-text">
 
-    </div>
+ Deep Skill Detection
 
-    """,unsafe_allow_html=True)
+ </div>
+
+ </div>
+
+ """,unsafe_allow_html=True)
 
 
 
 with col3:
 
-    st.markdown("""
+ st.markdown("""
 
-    <div class="card">
+ <div class="card float">
 
-    <div style="font-size:60px">📊</div>
+ <div style="font-size:70px">
 
-    <div class="card-title">
+ 📊
 
-    ATS Score
+ </div>
 
-    </div>
+ <div class="card-title">
 
-    <div class="card-text">
+ ATS Score
 
-    Resume Strength Analysis
+ </div>
 
-    </div>
+ <div class="card-text">
 
-    </div>
+ Resume Intelligence
 
-    """,unsafe_allow_html=True)
+ </div>
+
+ </div>
+
+ """,unsafe_allow_html=True)
 
 
 
-# ---------- BOTTOM ----------
+# -------- BOTTOM --------
 
 st.markdown("""
 
 <div class="bottom">
 
-Use Sidebar To Navigate
+Use Sidebar To Navigate 🚀
 
 </div>
 
