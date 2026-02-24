@@ -1,18 +1,10 @@
 import streamlit as st
 from animations import load_animations
+from utils import extract_skills
 
 load_animations()
 
-
-st.markdown("""
-
-<div class="title">
-
-📊 ATS Checker
-
-</div>
-
-""",unsafe_allow_html=True)
+st.markdown('<div class="title">📈 ATS Checker</div>',unsafe_allow_html=True)
 
 
 
@@ -24,14 +16,47 @@ if "resume_text" not in st.session_state:
 
 
 
-skills=extract_skills(st.session_state.resume_text)
+resume=st.session_state.resume_text
 
+skills=extract_skills(resume)
+
+
+
+st.markdown("### ATS Result")
 
 
 score=len(skills)*5
 
+if score>100:
+    score=100
+
+
+
+st.metric("ATS Score",str(score)+"%")
 
 
 st.progress(score)
 
-st.metric("ATS Score",score)
+
+
+st.markdown("### Skills Detected")
+
+for s in skills:
+
+    st.write("✔",s)
+
+
+
+if score>80:
+
+    st.success("Excellent ATS Resume")
+
+
+elif score>60:
+
+    st.info("Good Resume")
+
+
+else:
+
+    st.error("Needs Improvement")

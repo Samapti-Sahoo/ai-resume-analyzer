@@ -1,43 +1,86 @@
 import streamlit as st
+import matplotlib.pyplot as plt
 from animations import load_animations
+from utils import extract_skills
+from scoring import calculate_similarity, calculate_final_score
 
 load_animations()
 
-
-st.markdown("""
-
-<div class="title">
-
-📊 Analysis Dashboard
-
-</div>
-
-""",unsafe_allow_html=True)
+st.markdown('<div class="title">📊 Analysis Dashboard</div>',unsafe_allow_html=True)
 
 
 
-if "resume_text" not in st.session_state:
+if "resume_text" not in st.session_state or "job_text" not in st.session_state:
 
-    st.warning("Upload Resume First")
+    st.warning("Upload Resume and Job Description First")
 
     st.stop()
 
 
 
-resume=st.session_state.resume_text
-job=st.session_state.get("job_text","")
+resume = st.session_state.resume_text
+job = st.session_state.job_text
+
+
+similarity = calculate_similarity(resume,job)
+
+resume_skills = extract_skills(resume)
+job_skills = extract_skills(job)
+
+
+matched = list(set(resume_skills) & set(job_skills))
+missing = list(set(job_skills) - set(resume_skills))
+
+
+skill_ratio = len(matched)/len(job_skills) if job_skills else 0
+
+ats_score = 80 if len(resume_skills)>5 else 60
+
+
+final_score = calculate_final_score(
+similarity,
+skill_ratio,
+ats_score
+)
 
 
 
-resume_skills=extract_skills(resume)
-job_skills=extract_skills(job)
+st.markdown("### 🎯 Final Score")
+
+st.metric("Resume Score",str(int(final_score))+"%")
+
+
+st.progress(int(final_score))
+
+
+st.markdown("## ✅ Matched Skills")
+
+for s in matched:
+    st.write("✔",s)
 
 
 
-matched=list(set(resume_skills)&set(job_skills))
-missing=list(set(job_skills)-set(resume_skills))
+st.markdown("## ❌ Missing Skills")
+
+for s in missing:
+    st.write("•",s)
 
 
 
-st.write("Matched:",matched)
-st.write("Missing:",missing)
+labels=["Matched","Missing"]
+
+sizes=[len(matched),len(missing)]
+
+
+
+if sum(sizes)>0:
+
+    fig,ax=plt.subplots()
+
+    ax.pie(
+    sizes,
+    labels=labels,
+    autopct="%1.1f%%"
+    )
+
+    st.pyplot(fig)

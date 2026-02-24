@@ -1,31 +1,28 @@
 import streamlit as st
 from animations import load_animations
-
-
+from utils import extract_text_from_pdf, clean_text
 
 load_animations()
 
 
-st.markdown("""
-
-<div class="title">
-
-📄 Upload Resume
-
-</div>
-
-""",unsafe_allow_html=True)
+st.markdown('<div class="title">📄 Upload Resume</div>',unsafe_allow_html=True)
 
 
-
-file=st.file_uploader("Upload Resume PDF",type=["pdf"])
-
+file = st.file_uploader("Upload Resume PDF",type=["pdf"])
 
 
 if file:
 
-    text=extract_text_from_pdf(file)
+    text = extract_text_from_pdf(file)
 
-    st.session_state.resume_text=text
+    cleaned = clean_text(text)
 
-    st.success("Resume Uploaded")
+    st.session_state.resume_text = cleaned
+
+    st.success("✅ Resume Uploaded Successfully")
+
+    st.markdown("""
+    ### Resume Preview
+    """)
+
+    st.write(text[:1500])
