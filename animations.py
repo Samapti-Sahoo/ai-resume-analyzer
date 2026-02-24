@@ -3,120 +3,256 @@ import streamlit as st
 def load_animations():
 
     st.markdown("""
-    <style>
 
-    /* Animated Background */
+<style>
 
-    .stApp {
-        background:
-        radial-gradient(circle at 20% 30%, #e0f7ff 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, #f0e6ff 0%, transparent 40%),
-        linear-gradient(135deg,#f8fbff,#eef5ff);
+/* ===== SOFT FUTURISTIC LIGHT BACKGROUND ===== */
 
-        background-size: 200% 200%;
-        animation: bgmove 12s infinite alternate;
-    }
+.stApp{
 
-    @keyframes bgmove{
-        0% {background-position:0% 50%;}
-        100% {background-position:100% 50%;}
-    }
+background:
 
+linear-gradient(
+120deg,
+#f7fbff,
+#eef4ff,
+#f9f6ff
+);
+
+}
 
 
-    /* 3D CARDS */
 
-    .card{
+/* ===== ANIME GLOW CIRCLES ===== */
 
-        background: white;
+.stApp::before{
 
-        padding:40px;
+content:"";
 
-        border-radius:20px;
+position:fixed;
 
-        box-shadow:
-        0px 20px 40px rgba(0,0,0,0.15);
+width:500px;
+height:500px;
 
-        transition:0.4s;
+top:-100px;
+left:-100px;
 
-        text-align:center;
+background:
 
-    }
+radial-gradient(
+circle,
+rgba(0,200,255,0.25),
+transparent
+);
 
-    .card:hover{
+filter:blur(80px);
 
-        transform:
+animation:float1 12s infinite alternate;
 
-        rotateX(8deg)
-
-        rotateY(-8deg)
-
-        scale(1.05);
-
-        box-shadow:
-        0px 40px 80px rgba(0,0,0,0.25);
-
-    }
+}
 
 
-    /* ROCKET ANIMATION */
+.stApp::after{
 
-    .rocket{
+content:"";
 
-        position:absolute;
+position:fixed;
 
-        top:50px;
+width:400px;
+height:400px;
 
-        left:-100px;
+bottom:-100px;
+right:-100px;
 
-        font-size:60px;
+background:
 
-        animation:rocketfly 10s infinite linear;
+radial-gradient(
+circle,
+rgba(200,120,255,0.25),
+transparent
+);
 
-    }
+filter:blur(80px);
 
-    @keyframes rocketfly{
+animation:float2 12s infinite alternate;
 
-        0%{
-        left:-100px;
-        transform:rotate(-10deg)
-        }
-
-        50%{
-        transform:rotate(5deg)
-        }
-
-        100%{
-        left:110%;
-        transform:rotate(-10deg)
-        }
-
-    }
+}
 
 
-    /* SIDEBAR PREMIUM */
+@keyframes float1{
 
-    section[data-testid="stSidebar"]{
+0%{transform:translateY(0px)}
 
-        background:linear-gradient(
-        180deg,
-        #f0f6ff,
-        #ffffff
-        );
+100%{transform:translateY(80px)}
 
-        box-shadow:
-        5px 0px 25px rgba(0,0,0,0.1);
-
-    }
+}
 
 
-    </style>
-    """,unsafe_allow_html=True)
+@keyframes float2{
+
+0%{transform:translateY(0px)}
+
+100%{transform:translateY(-80px)}
+
+}
+
+
+/* ===== GLASS CARDS ===== */
+
+.card{
+
+background:
+
+rgba(255,255,255,0.75);
+
+backdrop-filter:blur(20px);
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:
+
+0px 20px 40px rgba(0,0,0,0.1);
+
+transition:0.4s;
+
+text-align:center;
+
+}
+
+
+
+/* ===== REAL 3D EFFECT ===== */
+
+.card:hover{
+
+transform:
+
+rotateX(8deg)
+
+rotateY(-8deg)
+
+scale(1.05);
+
+box-shadow:
+
+0px 50px 80px rgba(0,0,0,0.2);
+
+}
+
+
+/* ===== TITLE GLOW ===== */
+
+.title{
+
+font-size:60px;
+
+font-weight:800;
+
+text-align:center;
+
+background:
+
+linear-gradient(
+90deg,
+#00c6ff,
+#6a5cff
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+
+/* ===== SUBTITLE ===== */
+
+.subtitle{
+
+text-align:center;
+
+font-size:22px;
+
+color:#555;
+
+}
+
+
+
+/* ===== ROCKET ===== */
+
+.rocket{
+
+position:absolute;
+
+top:40px;
+
+left:-100px;
+
+font-size:50px;
+
+animation:rocketfly 12s infinite linear;
+
+}
+
+
+@keyframes rocketfly{
+
+0%{
+left:-100px;
+}
+
+100%{
+left:110%;
+}
+
+}
+
+
+
+/* ===== SIDEBAR PREMIUM ===== */
+
+section[data-testid="stSidebar"]{
+
+background:
+
+linear-gradient(
+180deg,
+#ffffff,
+#f2f6ff
+);
+
+box-shadow:
+
+5px 0px 30px rgba(0,0,0,0.08);
+
+}
+
+
+/* Sidebar Animation */
+
+section[data-testid="stSidebar"]:hover{
+
+box-shadow:
+
+10px 0px 50px rgba(0,0,0,0.15);
+
+transition:0.3s;
+
+}
+
+</style>
+
+""",unsafe_allow_html=True)
 
 
 
     st.markdown("""
-    <div class="rocket">
-    🚀
-    </div>
-    """,unsafe_allow_html=True)
+
+<div class="rocket">
+🚀
+</div>
+
+""",unsafe_allow_html=True)
