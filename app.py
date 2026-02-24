@@ -1,153 +1,96 @@
-def load_css():
+import streamlit as st
+from animations import load_animations
 
-    return """
-<style>
+st.set_page_config(
+page_title="AI Resume Analyzer",
+layout="wide"
+)
 
-/* Light Premium Background */
+load_animations()
 
-.stApp{
+st.markdown("<h1 style='text-align:center'>🚀 AI Resume Analyzer</h1>",unsafe_allow_html=True)
 
-background: linear-gradient(
-135deg,
-#f8fbff,
-#eef5ff,
-#f5faff
-);
+st.markdown(
+"<h3 style='text-align:center;color:gray'>Futuristic Resume Intelligence</h3>",
+unsafe_allow_html=True
+)
 
-}
 
 
-/* Sidebar */
+col1,col2,col3 = st.columns(3)
 
-section[data-testid="stSidebar"]{
 
-background:linear-gradient(
-180deg,
-#ffffff,
-#f3f8ff
-);
+with col1:
 
-border-right:1px solid #d6e6ff;
+    if st.button("📄 Upload Resume"):
 
-box-shadow:0px 0px 20px rgba(0,0,0,0.05);
+        st.switch_page("pages/1_Resume_Upload.py")
 
-}
 
+    st.markdown("""
 
-/* Title */
+<div class="card">
 
-.title{
+<h2>Upload Resume</h2>
 
-text-align:center;
+<p>Smart Resume Parser</p>
 
-font-size:52px;
+</div>
 
-font-weight:bold;
+""",unsafe_allow_html=True)
 
-color:#0077ff;
 
-}
 
+with col2:
 
-/* Subtitle */
+    if st.button("🧠 AI Matching"):
 
-.subtitle{
+        st.switch_page("pages/3_Analysis_Dashboard.py")
 
-text-align:center;
+    st.markdown("""
 
-font-size:20px;
+<div class="card">
 
-color:#555;
+<h2>AI Matching</h2>
 
-margin-bottom:30px;
+<p>Deep Skill Detection</p>
 
-}
+</div>
 
+""",unsafe_allow_html=True)
 
-/* Cards */
 
-.card{
 
-padding:40px;
 
-border-radius:20px;
+with col3:
 
-background:white;
+    if st.button("📊 ATS Score"):
 
-border:1px solid #e5efff;
+        st.switch_page("pages/4_ATS_Checker.py")
 
-box-shadow:0px 10px 30px rgba(0,0,0,0.08);
 
-transition:0.4s;
+    st.markdown("""
 
-text-align:center;
+<div class="card">
 
-}
+<h2>ATS Score</h2>
 
-.card:hover{
+<p>Resume Strength</p>
 
-transform:translateY(-8px);
+</div>
 
-box-shadow:0px 25px 50px rgba(0,0,0,0.15);
+""",unsafe_allow_html=True)
+    
+st.sidebar.markdown("""
 
-}
+### Navigation
 
+📄 Resume Upload
 
-/* Buttons */
+🧠 Job Description
 
-.stButton>button{
+📊 Dashboard
 
-background:#0077ff;
+⭐ ATS Checker
 
-color:white;
-
-border-radius:10px;
-
-padding:10px 25px;
-
-border:none;
-
-}
-
-.stButton>button:hover{
-
-background:#005ce6;
-
-}
-
-
-/* Upload box */
-
-.upload-box{
-
-padding:30px;
-
-border-radius:20px;
-
-background:white;
-
-border:2px dashed #0077ff;
-
-box-shadow:0px 10px 25px rgba(0,0,0,0.08);
-
-}
-
-
-/* Metrics */
-
-.metric{
-
-padding:20px;
-
-background:white;
-
-border-radius:15px;
-
-box-shadow:0px 10px 20px rgba(0,0,0,0.1);
-
-text-align:center;
-
-}
-
-</style>
-"""
+""") 
