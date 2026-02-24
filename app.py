@@ -1,217 +1,124 @@
 import streamlit as st
 
-
-# PAGE CONFIG
+# Page Config
 st.set_page_config(
     page_title="AI Resume Analyzer",
     page_icon="🚀",
     layout="wide"
 )
 
-
-# ULTRA PREMIUM CSS DESIGN
-
+# ---------- PREMIUM CSS ----------
 st.markdown("""
-
 <style>
 
-/* Animated Background */
-
-.stApp{
-
-background: linear-gradient(-45deg,#020617,#0f172a,#111827,#1e293b);
-
-background-size:400% 400%;
-
-animation:gradient 18s ease infinite;
-
+.stApp {
+background: linear-gradient(135deg,#0f172a,#020617);
 color:white;
-
 }
 
-
-@keyframes gradient{
-
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-
-}
-
-
-/* Sidebar */
-
-section[data-testid="stSidebar"]{
-
-background:rgba(15,23,42,0.7);
-
-backdrop-filter:blur(20px);
-
-border-right:1px solid rgba(255,255,255,0.1);
-
-}
-
+/* Remove Streamlit menu */
+#MainMenu {visibility:hidden;}
+footer {visibility:hidden;}
+header {visibility:hidden;}
 
 /* Title */
-
-.main-title{
-
-font-size:70px;
-
-font-weight:900;
-
-background:linear-gradient(90deg,#22d3ee,#6366f1,#10b981);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
+.big-title{
+font-size:60px;
+font-weight:bold;
 text-align:center;
-
+background: linear-gradient(90deg,#22c55e,#38bdf8);
+-webkit-background-clip:text;
+color:transparent;
 }
-
-
-/* Subtitle */
 
 .subtitle{
-
-color:#cbd5e1;
-
-font-size:22px;
-
 text-align:center;
-
+font-size:22px;
+color:#cbd5e1;
+margin-bottom:30px;
 }
 
+/* Cards */
 
-/* Glass Card */
-
-.glass{
-
+.card{
 background:rgba(255,255,255,0.05);
-
-backdrop-filter:blur(20px);
-
-border-radius:25px;
-
-padding:40px;
-
-margin-top:40px;
-
+padding:30px;
+border-radius:20px;
+text-align:center;
 border:1px solid rgba(255,255,255,0.1);
-
-box-shadow:0px 20px 60px rgba(0,0,0,0.7);
-
 transition:0.3s;
-
 }
 
-.glass:hover{
-
-transform:translateY(-5px);
-
+.card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.08);
 }
 
+.metric{
 
-/* Buttons */
-
-.stButton>button{
-
-background:linear-gradient(90deg,#22d3ee,#6366f1);
-
-color:white;
-
-border-radius:10px;
-
-border:none;
-
-padding:10px 25px;
-
+font-size:35px;
 font-weight:bold;
+color:#22c55e;
 
 }
-
-
-.stButton>button:hover{
-
-box-shadow:0px 0px 20px #22d3ee;
-
-}
-
-
-/* Progress */
-
-.stProgress > div > div > div{
-
-background-image:linear-gradient(90deg,#22d3ee,#6366f1);
-
-}
-
 
 </style>
-
-""",unsafe_allow_html=True)
-
+""", unsafe_allow_html=True)
 
 
-# MAIN TITLE
+# ---------- HEADER ----------
 
-st.markdown('<div class="main-title">🚀 AI Resume Analyzer</div>',unsafe_allow_html=True)
+st.markdown('<div class="big-title">🚀 AI Resume Analyzer</div>',unsafe_allow_html=True)
 
-st.markdown('<div class="subtitle">Intelligent Job Matching System</div>',unsafe_allow_html=True)
+st.markdown(
+'<div class="subtitle">Intelligent Resume Matching System</div>',
+unsafe_allow_html=True
+)
+
+st.write("")
+st.write("")
+
+
+# ---------- CARDS ----------
+
+col1,col2,col3 = st.columns(3)
+
+with col1:
+
+    st.markdown("""
+    <div class="card">
+    📄
+    <h2>Upload Resume</h2>
+    Analyze PDF Resume
+    </div>
+    """,unsafe_allow_html=True)
+
+
+with col2:
+
+    st.markdown("""
+    <div class="card">
+    🧠
+    <h2>AI Matching</h2>
+    Smart Skill Detection
+    </div>
+    """,unsafe_allow_html=True)
+
+
+with col3:
+
+    st.markdown("""
+    <div class="card">
+    📊
+    <h2>ATS Score</h2>
+    Resume Strength
+    </div>
+    """,unsafe_allow_html=True)
 
 
 
 st.write("")
-
+st.write("")
 st.write("")
 
-
-
-# GLASS CARD
-
-st.markdown("""
-
-<div class="glass">
-
-<h2>Welcome 👋</h2>
-
-<p>
-
-Upload your resume and job description to get:
-
-<br><br>
-
-✔ ATS Score<br>
-
-✔ Skill Matching<br>
-
-✔ Missing Skills<br>
-
-✔ Resume Improvement Tips
-
-</p>
-
-</div>
-
-""",unsafe_allow_html=True)
-
-
-
-# SIDEBAR
-
-st.sidebar.success("Navigate using sidebar")
-
-st.sidebar.markdown("""
-
-### Pages
-
-📄 Resume Upload
-
-📋 Job Description
-
-📊 Analysis Dashboard
-
-🎯 ATS Checker
-
-""")
+st.success("Use Sidebar To Navigate")
