@@ -6,106 +6,36 @@ def load_animations():
 
 <style>
 
-/* ===== SOFT FUTURISTIC LIGHT BACKGROUND ===== */
+/* ===== MEDIUM DARK BACKGROUND ===== */
 
 .stApp{
 
 background:
 
 linear-gradient(
-120deg,
-#f7fbff,
-#eef4ff,
-#f9f6ff
+135deg,
+#eaf2ff,
+#dfe9ff,
+#edf3ff
 );
+
+color:#111;
 
 }
 
 
 
-/* ===== ANIME GLOW CIRCLES ===== */
+/* ===== SOFT DARK CONTAINER ===== */
 
-.stApp::before{
-
-content:"";
-
-position:fixed;
-
-width:500px;
-height:500px;
-
-top:-100px;
-left:-100px;
+.block-container{
 
 background:
 
-radial-gradient(
-circle,
-rgba(0,200,255,0.25),
-transparent
+linear-gradient(
+135deg,
+rgba(40,60,100,0.85),
+rgba(30,40,80,0.85)
 );
-
-filter:blur(80px);
-
-animation:float1 12s infinite alternate;
-
-}
-
-
-.stApp::after{
-
-content:"";
-
-position:fixed;
-
-width:400px;
-height:400px;
-
-bottom:-100px;
-right:-100px;
-
-background:
-
-radial-gradient(
-circle,
-rgba(200,120,255,0.25),
-transparent
-);
-
-filter:blur(80px);
-
-animation:float2 12s infinite alternate;
-
-}
-
-
-@keyframes float1{
-
-0%{transform:translateY(0px)}
-
-100%{transform:translateY(80px)}
-
-}
-
-
-@keyframes float2{
-
-0%{transform:translateY(0px)}
-
-100%{transform:translateY(-80px)}
-
-}
-
-
-/* ===== GLASS CARDS ===== */
-
-.card{
-
-background:
-
-rgba(255,255,255,0.75);
-
-backdrop-filter:blur(20px);
 
 padding:40px;
 
@@ -113,36 +43,15 @@ border-radius:20px;
 
 box-shadow:
 
-0px 20px 40px rgba(0,0,0,0.1);
+0px 20px 60px rgba(0,0,0,0.2);
 
-transition:0.4s;
-
-text-align:center;
+color:white;
 
 }
 
 
 
-/* ===== REAL 3D EFFECT ===== */
-
-.card:hover{
-
-transform:
-
-rotateX(8deg)
-
-rotateY(-8deg)
-
-scale(1.05);
-
-box-shadow:
-
-0px 50px 80px rgba(0,0,0,0.2);
-
-}
-
-
-/* ===== TITLE GLOW ===== */
+/* ===== TITLE ===== */
 
 .title{
 
@@ -152,19 +61,10 @@ font-weight:800;
 
 text-align:center;
 
-background:
-
-linear-gradient(
-90deg,
-#00c6ff,
-#6a5cff
-);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
+color:white;
 
 }
+
 
 
 /* ===== SUBTITLE ===== */
@@ -175,7 +75,53 @@ text-align:center;
 
 font-size:22px;
 
-color:#555;
+color:#dfe8ff;
+
+}
+
+
+
+/* ===== GLASS CARDS ===== */
+
+.card{
+
+background:
+
+rgba(255,255,255,0.12);
+
+padding:40px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,0.2);
+
+box-shadow:
+
+0px 15px 40px rgba(0,0,0,0.3);
+
+transition:0.4s;
+
+text-align:center;
+
+color:white;
+
+}
+
+
+
+/* ===== 3D HOVER ===== */
+
+.card:hover{
+
+transform:
+
+translateY(-10px)
+
+scale(1.04);
+
+box-shadow:
+
+0px 40px 70px rgba(0,0,0,0.5);
 
 }
 
@@ -187,32 +133,28 @@ color:#555;
 
 position:absolute;
 
-top:40px;
+top:20px;
 
 left:-100px;
 
 font-size:50px;
 
-animation:rocketfly 12s infinite linear;
+animation:rocketfly 15s infinite linear;
 
 }
 
 
 @keyframes rocketfly{
 
-0%{
-left:-100px;
-}
+0%{left:-100px;}
 
-100%{
-left:110%;
-}
+100%{left:110%;}
 
 }
 
 
 
-/* ===== SIDEBAR PREMIUM ===== */
+/* ===== SIDEBAR ===== */
 
 section[data-testid="stSidebar"]{
 
@@ -220,28 +162,15 @@ background:
 
 linear-gradient(
 180deg,
-#ffffff,
-#f2f6ff
+#1e2a4a,
+#2c3c6b
 );
 
-box-shadow:
-
-5px 0px 30px rgba(0,0,0,0.08);
+color:white;
 
 }
 
 
-/* Sidebar Animation */
-
-section[data-testid="stSidebar"]:hover{
-
-box-shadow:
-
-10px 0px 50px rgba(0,0,0,0.15);
-
-transition:0.3s;
-
-}
 
 </style>
 
@@ -252,7 +181,9 @@ transition:0.3s;
     st.markdown("""
 
 <div class="rocket">
+
 🚀
+
 </div>
 
 """,unsafe_allow_html=True)

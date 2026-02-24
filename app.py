@@ -14,7 +14,7 @@ st.markdown("""
 
 <div class="title">
 
-AI Resume Analyzer
+🚀 AI Resume Analyzer
 
 </div>
 
@@ -26,7 +26,7 @@ st.markdown("""
 
 <div class="subtitle">
 
-Next Generation Resume Intelligence
+Smart Resume Intelligence System
 
 </div>
 
@@ -35,16 +35,12 @@ Next Generation Resume Intelligence
 
 
 st.write("")
-
 st.write("")
 
 
-
-col1,col2,col3 = st.columns(3)
-
+col1,col2,col3=st.columns(3)
 
 
-# CARD 1
 
 with col1:
 
@@ -54,7 +50,7 @@ with col1:
 
 <h2>📄 Upload Resume</h2>
 
-<p>AI Resume Parser</p>
+<p>Upload Resume PDF</p>
 
 </div>
 
@@ -66,8 +62,6 @@ with col1:
 
 
 
-# CARD 2
-
 with col2:
 
     st.markdown("""
@@ -76,7 +70,7 @@ with col2:
 
 <h2>🧠 AI Matching</h2>
 
-<p>Smart Skill Detection</p>
+<p>Compare Resume and Job</p>
 
 </div>
 
@@ -89,8 +83,6 @@ with col2:
 
 
 
-# CARD 3
-
 with col3:
 
     st.markdown("""
@@ -99,7 +91,7 @@ with col3:
 
 <h2>📊 ATS Score</h2>
 
-<p>Resume Strength</p>
+<p>Check ATS Compatibility</p>
 
 </div>
 
@@ -112,16 +104,9 @@ with col3:
 
 
 
-st.sidebar.markdown("""
+st.sidebar.title("Navigation")
 
-### Navigation
-
-📄 Resume Upload
-
-🧠 Job Description
-
-📊 Dashboard
-
-⭐ ATS Checker
-
-""")
+st.sidebar.write("📄 Resume Upload")
+st.sidebar.write("🧠 Job Description")
+st.sidebar.write("📊 Dashboard")
+st.sidebar.write("⭐ ATS Checker")
