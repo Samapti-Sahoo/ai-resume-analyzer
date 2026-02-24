@@ -2,38 +2,42 @@ import streamlit as st
 from utils import extract_text_from_pdf, clean_text, extract_skills
 
 
-# ---------- PAGE DESIGN ----------
+# ---------- PAGE TITLE ----------
+
+st.title("📄 Resume Upload")
+
+st.write("Upload your resume or use sample resume")
+
+st.write("")
+
+
+# ---------- DESIGN ----------
 
 st.markdown("""
 
 <style>
 
-/* Upload Box */
-
 .upload-box{
 
 background:rgba(255,255,255,0.05);
 
-padding:40px;
+padding:30px;
 
 border-radius:20px;
 
-text-align:center;
-
 border:1px solid rgba(255,255,255,0.1);
+
+text-align:center;
 
 }
 
+.skill-tag{
 
-/* Skill Box */
+background:rgba(16,185,129,0.3);
 
-.skill-box{
+padding:8px 16px;
 
-background:rgba(34,197,94,0.15);
-
-padding:15px;
-
-border-radius:10px;
+border-radius:20px;
 
 margin:5px;
 
@@ -49,17 +53,7 @@ font-weight:bold;
 
 
 
-# ---------- TITLE ----------
-
-st.markdown("# 📄 Resume Upload")
-
-st.write("Upload Resume PDF for AI Analysis")
-
-st.write("")
-
-
-
-# ---------- UPLOAD AREA ----------
+# ---------- FILE UPLOAD ----------
 
 st.markdown('<div class="upload-box">',unsafe_allow_html=True)
 
@@ -72,7 +66,28 @@ st.markdown('</div>',unsafe_allow_html=True)
 
 
 
-# ---------- PROCESS RESUME ----------
+# ---------- SAMPLE RESUME BUTTON ----------
+
+st.write("")
+
+if st.button("Use Sample Resume"):
+
+    sample_resume = """
+
+Python developer with machine learning experience.
+
+Skills include python, sql, machine learning,
+data analysis, communication and problem solving.
+
+"""
+
+    st.session_state.resume_text = sample_resume
+
+    st.success("Sample Resume Loaded")
+
+
+
+# ---------- PROCESS PDF ----------
 
 if uploaded_file:
 
@@ -88,16 +103,20 @@ if uploaded_file:
 
     st.success("Resume Uploaded Successfully")
 
-
     st.write("")
 
 
-    st.subheader("Detected Skills")
+    st.subheader("Skills Detected")
 
 
     for skill in skills:
 
         st.markdown(
-        f'<span class="skill-box">{skill}</span>',
+        f'<span class="skill-tag">{skill}</span>',
         unsafe_allow_html=True
         )
+
+
+elif "resume_text" not in st.session_state:
+
+    st.info("Upload Resume or Use Sample Resume")
