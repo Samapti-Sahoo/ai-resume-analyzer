@@ -1,7 +1,5 @@
 import streamlit as st
 from animations import load_animations
-from scoring import calculate_similarity,calculate_final_score
-from utils import extract_skills
 
 load_animations()
 

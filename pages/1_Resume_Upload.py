@@ -1,6 +1,7 @@
 import streamlit as st
 from animations import load_animations
-from utils import extract_text_from_pdf
+
+
 
 load_animations()
 

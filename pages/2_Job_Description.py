@@ -1,6 +1,5 @@
 import streamlit as st
 from animations import load_animations
-from utils import clean_text,extract_skills
 
 load_animations()
 
