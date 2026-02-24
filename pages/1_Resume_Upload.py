@@ -1,36 +1,78 @@
 import streamlit as st
 from utils import extract_text_from_pdf, clean_text, extract_skills
 
+
+# ---------- PAGE DESIGN ----------
+
 st.markdown("""
-<div class="main-title">
-Resume Analyzer
-</div>
+
+<style>
+
+/* Upload Box */
+
+.upload-box{
+
+background:rgba(255,255,255,0.05);
+
+padding:40px;
+
+border-radius:20px;
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,0.1);
+
+}
+
+
+/* Skill Box */
+
+.skill-box{
+
+background:rgba(34,197,94,0.15);
+
+padding:15px;
+
+border-radius:10px;
+
+margin:5px;
+
+display:inline-block;
+
+font-weight:bold;
+
+}
+
+</style>
+
 """,unsafe_allow_html=True)
 
-st.markdown("<br>",unsafe_allow_html=True)
 
 
-# Upload Card
+# ---------- TITLE ----------
 
-st.markdown('<div class="glass">',unsafe_allow_html=True)
+st.markdown("# 📄 Resume Upload")
 
-st.subheader("📁 Upload Resume")
+st.write("Upload Resume PDF for AI Analysis")
+
+st.write("")
+
+
+
+# ---------- UPLOAD AREA ----------
+
+st.markdown('<div class="upload-box">',unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader(
-    "Upload PDF Resume",
-    type=["pdf"]
+"Upload Resume PDF",
+type=["pdf"]
 )
 
 st.markdown('</div>',unsafe_allow_html=True)
 
-<<<<<<< HEAD
-=======
-uploaded_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
-if uploaded_file is None:
-    st.warning("Please upload a resume to proceed.")
-    st.stop()
 
->>>>>>> 4d8c990fd13454e69eb315505811905e6e37dccd
+
+# ---------- PROCESS RESUME ----------
 
 if uploaded_file:
 
@@ -40,20 +82,22 @@ if uploaded_file:
 
     st.session_state.resume_text = cleaned
 
+
     skills = extract_skills(cleaned)
 
-    st.session_state.resume_skills = skills
+
+    st.success("Resume Uploaded Successfully")
 
 
-    st.markdown("<br>",unsafe_allow_html=True)
+    st.write("")
 
 
-    # Skills Card
+    st.subheader("Detected Skills")
 
-    st.markdown('<div class="glass">',unsafe_allow_html=True)
 
-    st.subheader("🎯 Skills Detected")
+    for skill in skills:
 
-    st.success(skills)
-
-    st.markdown('</div>',unsafe_allow_html=True)
+        st.markdown(
+        f'<span class="skill-box">{skill}</span>',
+        unsafe_allow_html=True
+        )
