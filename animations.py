@@ -6,327 +6,153 @@ def load_animations():
 
 <style>
 
-/* MAIN BACKGROUND */
+/* Background Medium Light Theme */
 
-.stApp{
+body{
 
 background:linear-gradient(
-135deg,
-#3c4172,
-#2c2f55,
-#1b1e3f
+180deg,
+#e9edf7,
+#cfd6ea
 );
 
 font-family:Segoe UI;
 
-color:#ffffff;
-
 }
 
 
 
-/* FORCE ALL TEXT VISIBLE */
+/* Hero Title */
 
-p,span,label,div{
-
-color:#ffffff !important;
-
-}
-
-
-h1,h2,h3{
-
-color:#ffffff !important;
-
-}
-
-
-/* Streamlit Text Fix */
-
-.stMarkdown{
-
-color:white !important;
-
-}
-
-.stText{
-
-color:white !important;
-
-}
-
-.stSubheader{
-
-color:white !important;
-
-}
-
-.stTitle{
-
-color:white !important;
-
-}
-
-.stHeader{
-
-color:white !important;
-
-}
-
-
-
-/* INPUT TEXT */
-
-textarea{
-
-color:black !important;
-
-background:white !important;
-
-}
-
-
-input{
-
-color:black !important;
-
-background:white !important;
-
-}
-
-
-
-/* TITLE */
-
-.title{
+.hero{
 
 text-align:center;
-
-font-size:70px;
-
-font-weight:800;
-
-color:white;
-
-text-shadow:0px 0px 30px cyan;
-
-}
-
-
-.subtitle{
-
-text-align:center;
-
-font-size:24px;
-
-color:#e8ecff;
-
-margin-bottom:40px;
-
-}
-
-
-
-/* ROCKET */
-
-.rocket{
-
-font-size:70px;
-
-text-align:center;
-
-animation:fly 3s infinite;
-
-}
-
-
-@keyframes fly{
-
-0%{transform:translateY(0px)}
-50%{transform:translateY(-15px)}
-100%{transform:translateY(0px)}
-
-}
-
-
-
-/* CARDS */
-
-.card{
-
-background:rgba(255,255,255,0.12);
 
 padding:40px;
 
-border-radius:25px;
+}
 
-text-align:center;
 
-backdrop-filter:blur(12px);
 
-box-shadow:
+.hero h1{
 
-0px 10px 30px rgba(0,0,0,0.6);
+font-size:55px;
 
-transition:0.4s;
-
-cursor:pointer;
-
-height:260px;
+color:#111111;
 
 }
 
 
 
-/* CARD TEXT */
+.hero p{
 
-.card h1{
+font-size:20px;
 
-font-size:50px;
-
-color:white;
-
-}
-
-
-.card h2{
-
-font-size:30px;
-
-color:white;
-
-}
-
-
-.card p{
-
-font-size:18px;
-
-color:#e6ecff;
+color:#333333;
 
 }
 
 
 
-/* HOVER */
+/* Upload Box */
 
-.card:hover{
+[data-testid="stFileUploader"]{
 
-transform:
-scale(1.08)
-translateY(-10px);
+background:#ffffff;
 
-box-shadow:
-0px 20px 60px rgba(0,0,0,0.9);
+padding:20px;
+
+border-radius:12px;
+
+box-shadow:0px 5px 20px rgba(0,0,0,0.1);
 
 }
 
 
 
-/* SIDEBAR */
+/* Buttons */
+
+button{
+
+height:65px !important;
+
+font-size:18px !important;
+
+border-radius:12px !important;
+
+}
+
+
+
+/* Sidebar */
 
 section[data-testid="stSidebar"]{
 
 background:linear-gradient(
-
 180deg,
-#25285a,
-#3c4172
-
+#2f3b5c,
+#222c46
 );
-
-}
-
-
-section[data-testid="stSidebar"] *{
-
-color:white !important;
-
-}
-
-
-
-/* BUTTONS */
-
-.stButton>button{
-
-background:linear-gradient(
-
-90deg,
-#00c6ff,
-#0072ff
-
-);
-
-border:none;
-
-border-radius:20px;
-
-padding:15px;
 
 color:white;
 
-font-size:18px;
-
-transition:0.3s;
-
-}
-
-
-.stButton>button:hover{
-
-transform:scale(1.1);
-
 }
 
 
 
-/* SUCCESS BOX */
+/* Fade Animation */
 
-.stAlert{
+section.main{
 
-color:white !important;
+animation:fade 0.8s;
 
 }
 
 
 
-/* METRIC TEXT */
+@keyframes fade{
 
-[data-testid="stMetricValue"]{
+from{
 
-color:white !important;
+opacity:0;
 
-}
-
-
-[data-testid="stMetricLabel"]{
-
-color:#e8ecff !important;
+transform:translateY(40px);
 
 }
 
+to{
 
+opacity:1;
 
-/* PROGRESS TEXT */
+transform:translateY(0px);
 
-.stProgress{
-
-color:white !important;
+}
 
 }
 
 
 
-/* WARNING */
+/* Text Visibility Fix */
 
-.stWarning{
+h1,h2,h3,h4{
 
-color:white !important;
+color:#111 !important;
 
 }
 
 
+p{
+
+color:#222 !important;
+
+}
+
+
+label{
+
+color:#111 !important;
+
+}
 
 </style>
 

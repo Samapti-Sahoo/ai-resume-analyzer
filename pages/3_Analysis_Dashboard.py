@@ -1,34 +1,55 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 from animations import load_animations
-from utils import extract_skills
 from scoring import calculate_similarity, calculate_final_score
+from utils import extract_skills
+
 
 load_animations()
 
-st.markdown('<div class="title">📊 Analysis Dashboard</div>',unsafe_allow_html=True)
+
+st.markdown("""
+
+<div class="hero">
+
+<h1>📊 AI Analysis</h1>
+
+<p>Smart Resume Intelligence</p>
+
+</div>
+
+""",unsafe_allow_html=True)
 
 
+if "resume_text" not in st.session_state:
 
-if "resume_text" not in st.session_state or "job_text" not in st.session_state:
+    st.warning("Upload Resume First")
 
-    st.warning("Upload Resume and Job Description First")
+    st.stop()
+
+
+if "job_text" not in st.session_state:
+
+    st.warning("Add Job Description First")
 
     st.stop()
 
 
 
 resume = st.session_state.resume_text
+
 job = st.session_state.job_text
 
 
 similarity = calculate_similarity(resume,job)
 
+
 resume_skills = extract_skills(resume)
+
 job_skills = extract_skills(job)
 
 
 matched = list(set(resume_skills) & set(job_skills))
+
 missing = list(set(job_skills) - set(resume_skills))
 
 
@@ -44,43 +65,30 @@ ats_score
 )
 
 
+st.markdown("## Final Resume Score")
 
-st.markdown("### 🎯 Final Score")
-
-st.metric("Resume Score",str(int(final_score))+"%")
+st.metric("Score",f"{int(final_score)}%")
 
 
 st.progress(int(final_score))
 
 
-st.markdown("## ✅ Matched Skills")
-
-for s in matched:
-    st.write("✔",s)
+st.write("")
 
 
-
-st.markdown("## ❌ Missing Skills")
-
-for s in missing:
-    st.write("•",s)
+col1,col2 = st.columns(2)
 
 
+with col1:
 
-labels=["Matched","Missing"]
+    st.markdown("### Matched Skills")
 
-sizes=[len(matched),len(missing)]
+    st.write(matched)
 
 
 
-if sum(sizes)>0:
+with col2:
 
-    fig,ax=plt.subplots()
+    st.markdown("### Missing Skills")
 
-    ax.pie(
-    sizes,
-    labels=labels,
-    autopct="%1.1f%%"
-    )
-
-    st.pyplot(fig)
+    st.write(missing)
