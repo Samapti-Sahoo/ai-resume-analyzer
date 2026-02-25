@@ -6,63 +6,158 @@ def load_animations():
 
 <style>
 
-/* Background Medium Light Theme */
+/* CINEMATIC BACKGROUND */
 
-body{
+.stApp{
 
-background:linear-gradient(
+background:
+radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4), transparent 40%),
+radial-gradient(circle at 80% 60%, rgba(200,220,255,0.4), transparent 40%),
+linear-gradient(
 180deg,
 #e9edf7,
 #cfd6ea
 );
 
-font-family:Segoe UI;
+animation:bgmove 12s infinite alternate;
 
 }
 
 
 
-/* Hero Title */
+@keyframes bgmove{
+
+0%{
+background-position:0% 0%;
+}
+
+100%{
+background-position:100% 100%;
+}
+
+}
+
+
+
+/* HERO TITLE */
 
 .hero{
 
 text-align:center;
 
-padding:40px;
+padding-top:40px;
+
+animation:fadeup 1s;
 
 }
-
 
 
 .hero h1{
 
-font-size:55px;
+font-size:60px;
 
-color:#111111;
+color:#111;
+
+text-shadow:0px 5px 15px rgba(0,0,0,0.2);
 
 }
-
 
 
 .hero p{
 
-font-size:20px;
+font-size:22px;
 
-color:#333333;
+color:#333;
 
 }
 
 
 
-/* Upload Box */
+/* FLOATING GLOW */
+
+.hero h1::after{
+
+content:"";
+
+position:absolute;
+
+width:200px;
+
+height:200px;
+
+background:rgba(100,150,255,0.2);
+
+filter:blur(80px);
+
+left:50%;
+
+top:80px;
+
+transform:translateX(-50%);
+
+animation:float 6s infinite;
+
+}
+
+
+
+@keyframes float{
+
+0%{transform:translate(-50%,0px)}
+
+50%{transform:translate(-50%,20px)}
+
+100%{transform:translate(-50%,0px)}
+
+}
+
+
+
+/* CARDS */
+
+.card{
+
+background:white;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:
+0px 10px 30px rgba(0,0,0,0.15);
+
+transition:0.4s;
+
+cursor:pointer;
+
+}
+
+
+
+.card:hover{
+
+transform:
+
+translateY(-10px)
+scale(1.03);
+
+box-shadow:
+
+0px 20px 50px rgba(0,0,0,0.25);
+
+}
+
+
+
+/* FILE UPLOADER */
 
 [data-testid="stFileUploader"]{
 
-background:#ffffff;
+background:white;
 
 padding:20px;
 
-border-radius:12px;
+border-radius:15px;
 
 box-shadow:0px 5px 20px rgba(0,0,0,0.1);
 
@@ -70,28 +165,16 @@ box-shadow:0px 5px 20px rgba(0,0,0,0.1);
 
 
 
-/* Buttons */
-
-button{
-
-height:65px !important;
-
-font-size:18px !important;
-
-border-radius:12px !important;
-
-}
-
-
-
-/* Sidebar */
+/* SIDEBAR CINEMATIC */
 
 section[data-testid="stSidebar"]{
 
-background:linear-gradient(
+background:
+
+linear-gradient(
 180deg,
-#2f3b5c,
-#222c46
+#34436b,
+#2a3454
 );
 
 color:white;
@@ -100,22 +183,21 @@ color:white;
 
 
 
-/* Fade Animation */
+/* PAGE ENTRY */
 
 section.main{
 
-animation:fade 0.8s;
+animation:fadeup 1s;
 
 }
 
 
 
-@keyframes fade{
+@keyframes fadeup{
 
 from{
 
 opacity:0;
-
 transform:translateY(40px);
 
 }
@@ -123,7 +205,6 @@ transform:translateY(40px);
 to{
 
 opacity:1;
-
 transform:translateY(0px);
 
 }
@@ -132,7 +213,7 @@ transform:translateY(0px);
 
 
 
-/* Text Visibility Fix */
+/* TEXT VISIBILITY */
 
 h1,h2,h3,h4{
 
@@ -140,13 +221,11 @@ color:#111 !important;
 
 }
 
-
 p{
 
 color:#222 !important;
 
 }
-
 
 label{
 
