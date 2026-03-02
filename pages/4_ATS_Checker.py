@@ -7,7 +7,7 @@ load_animations()
 
 st.markdown("""
 
-<div class="hero">
+<div class='hero'>
 
 <h1>📈 ATS Checker</h1>
 
@@ -36,23 +36,10 @@ length = len(resume)
 score = min(100,int(length/40))
 
 
-st.markdown("## ATS Score")
+st.markdown("<div class='card'>",unsafe_allow_html=True)
 
-st.metric("ATS Compatibility",f"{score}%")
-
+st.metric("ATS Compatibility",str(score)+"%")
 
 st.progress(score)
 
-
-
-if score > 75:
-
-    st.success("Strong Resume")
-
-elif score > 50:
-
-    st.warning("Moderate Resume")
-
-else:
-
-    st.error("Weak Resume")
+st.markdown("</div>",unsafe_allow_html=True)

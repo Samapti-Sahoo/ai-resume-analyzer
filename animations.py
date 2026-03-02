@@ -6,59 +6,123 @@ def load_animations():
 
 <style>
 
-/* CINEMATIC BACKGROUND */
+/* SIDEBAR REMOVE */
+
+section[data-testid="stSidebar"]{
+display:none;
+}
+
+div[data-testid="collapsedControl"]{
+display:none;
+}
+
+
+/* APP BACKGROUND */
 
 .stApp{
 
 background:
-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4), transparent 40%),
-radial-gradient(circle at 80% 60%, rgba(200,220,255,0.4), transparent 40%),
+
 linear-gradient(
 180deg,
-#e9edf7,
-#cfd6ea
+#e8edf7,
+#dfe6f3
 );
 
-animation:bgmove 12s infinite alternate;
+font-family:sans-serif;
 
 }
 
 
 
-@keyframes bgmove{
+/* NAVBAR */
 
-0%{
-background-position:0% 0%;
+.navbar{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+right:0;
+
+height:70px;
+
+background:white;
+
+box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding-left:40px;
+
+padding-right:40px;
+
+z-index:999;
+
 }
 
-100%{
-background-position:100% 100%;
-}
+
+/* LOGO */
+
+.logo{
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#111;
 
 }
 
 
 
-/* HERO TITLE */
+/* NAV LINKS */
+
+.nav-links a{
+
+margin-left:30px;
+
+text-decoration:none;
+
+font-size:18px;
+
+color:#333;
+
+font-weight:500;
+
+}
+
+
+.nav-links a:hover{
+
+color:#007bff;
+
+}
+
+
+
+/* HERO */
 
 .hero{
 
+margin-top:120px;
+
 text-align:center;
-
-padding-top:40px;
-
-animation:fadeup 1s;
 
 }
 
 
 .hero h1{
 
-font-size:60px;
+font-size:55px;
 
 color:#111;
-
-text-shadow:0px 5px 15px rgba(0,0,0,0.2);
 
 }
 
@@ -67,47 +131,7 @@ text-shadow:0px 5px 15px rgba(0,0,0,0.2);
 
 font-size:22px;
 
-color:#333;
-
-}
-
-
-
-/* FLOATING GLOW */
-
-.hero h1::after{
-
-content:"";
-
-position:absolute;
-
-width:200px;
-
-height:200px;
-
-background:rgba(100,150,255,0.2);
-
-filter:blur(80px);
-
-left:50%;
-
-top:80px;
-
-transform:translateX(-50%);
-
-animation:float 6s infinite;
-
-}
-
-
-
-@keyframes float{
-
-0%{transform:translate(-50%,0px)}
-
-50%{transform:translate(-50%,20px)}
-
-100%{transform:translate(-50%,0px)}
+color:#444;
 
 }
 
@@ -119,16 +143,15 @@ animation:float 6s infinite;
 
 background:white;
 
-padding:30px;
+padding:40px;
 
-border-radius:18px;
+border-radius:25px;
 
 box-shadow:
-0px 10px 30px rgba(0,0,0,0.15);
 
-transition:0.4s;
+0px 20px 40px rgba(0,0,0,0.15);
 
-cursor:pointer;
+text-align:center;
 
 }
 
@@ -136,100 +159,47 @@ cursor:pointer;
 
 .card:hover{
 
-transform:
+transform:translateY(-8px);
 
-translateY(-10px)
-scale(1.03);
-
-box-shadow:
-
-0px 20px 50px rgba(0,0,0,0.25);
+transition:0.3s;
 
 }
 
 
 
-/* FILE UPLOADER */
+/* GRID */
 
-[data-testid="stFileUploader"]{
+.grid{
 
-background:white;
+display:grid;
 
-padding:20px;
+grid-template-columns:1fr 1fr 1fr;
 
-border-radius:15px;
+gap:30px;
 
-box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+margin-top:40px;
 
 }
 
 
 
-/* SIDEBAR CINEMATIC */
+/* BUTTON */
 
-section[data-testid="stSidebar"]{
+.btn{
 
-background:
+margin-top:20px;
 
-linear-gradient(
-180deg,
-#34436b,
-#2a3454
-);
+padding:12px 20px;
+
+background:black;
 
 color:white;
 
-}
+border-radius:10px;
 
+display:inline-block;
 
-
-/* PAGE ENTRY */
-
-section.main{
-
-animation:fadeup 1s;
-
-}
-
-
-
-@keyframes fadeup{
-
-from{
-
-opacity:0;
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-transform:translateY(0px);
-
-}
-
-}
-
-
-
-/* TEXT VISIBILITY */
-
-h1,h2,h3,h4{
-
-color:#111 !important;
-
-}
-
-p{
-
-color:#222 !important;
-
-}
-
-label{
-
-color:#111 !important;
+text-decoration:none;
 
 }
 

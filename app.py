@@ -1,33 +1,50 @@
 import streamlit as st
 from animations import load_animations
 
-
-# -------------------------
-# PAGE CONFIG
-# -------------------------
-
 st.set_page_config(
-    page_title="AI Resume Analyzer",
-    page_icon="🚀",
-    layout="wide"
+page_title="AI Resume Analyzer",
+layout="wide"
 )
-
-
-# -------------------------
-# LOAD CINEMATIC DESIGN
-# -------------------------
 
 load_animations()
 
 
 
-# -------------------------
-# HERO SECTION
-# -------------------------
+# NAVBAR
 
 st.markdown("""
 
-<div class='hero'>
+<div class="navbar">
+
+<div class="logo">
+
+🚀 ResumeAI
+
+</div>
+
+<div class="nav-links">
+
+<a href="?page=home">Home</a>
+
+<a href="?page=upload">Upload</a>
+
+<a href="?page=analysis">Analysis</a>
+
+<a href="?page=ats">ATS</a>
+
+</div>
+
+</div>
+
+""",unsafe_allow_html=True)
+
+
+
+# HERO
+
+st.markdown("""
+
+<div class="hero">
 
 <h1>🚀 AI Resume Analyzer</h1>
 
@@ -35,82 +52,63 @@ st.markdown("""
 
 </div>
 
-""", unsafe_allow_html=True)
+""",unsafe_allow_html=True)
 
 
 
-st.write("")
-st.write("")
-st.write("")
-
-
-# -------------------------
-# CLICKABLE MOVIE CARDS
-# -------------------------
-
-col1, col2, col3 = st.columns(3)
-
-
-# Upload Resume Card
-with col1:
-
-    st.markdown("""
-    <div class="card">
-        <h2>📄 Upload Resume</h2>
-        <p>Upload Resume PDF</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if st.button("Open Upload Page"):
-        st.switch_page("pages/1_Resume_Upload.py")
-
-
-
-# AI Matching Card
-with col2:
-
-    st.markdown("""
-    <div class="card">
-        <h2>🧠 AI Matching</h2>
-        <p>Analyze Resume Skills</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if st.button("Open Matching Page"):
-        st.switch_page("pages/3_Analysis_Dashboard.py")
-
-
-
-# ATS Card
-with col3:
-
-    st.markdown("""
-    <div class="card">
-        <h2>📊 ATS Score</h2>
-        <p>Check ATS Compatibility</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if st.button("Open ATS Page"):
-        st.switch_page("pages/4_ATS_Checker.py")
-
-
-
-st.write("")
-st.write("")
-st.write("")
-
-
-# -------------------------
-# FOOTER INFO
-# -------------------------
+# CARDS
 
 st.markdown("""
 
-<center>
+<div class="grid">
 
-### Navigate using Sidebar or Cards
+<div class="card">
 
-</center>
+<h2>📄 Upload Resume</h2>
 
-""", unsafe_allow_html=True)
+<p>Upload Resume PDF</p>
+
+<a class="btn" href="?page=upload">
+
+Open Upload
+
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>🧠 AI Matching</h2>
+
+<p>Analyze Resume Skills</p>
+
+<a class="btn" href="?page=analysis">
+
+Open Matching
+
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>📊 ATS Score</h2>
+
+<p>Check ATS Compatibility</p>
+
+<a class="btn" href="?page=ats">
+
+Open ATS
+
+</a>
+
+</div>
+
+
+</div>
+
+""",unsafe_allow_html=True)
